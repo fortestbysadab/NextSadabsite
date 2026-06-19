@@ -69,6 +69,36 @@
     color: transparent;
   }
 
+  /* Dark-black signature with a shiny metallic sheen sweeping across */
+  .signature-shine {
+    background: linear-gradient(
+      100deg,
+      #171717 0%,
+      #171717 38%,
+      #6b6b6b 47%,
+      #d4d4d4 50%,
+      #6b6b6b 53%,
+      #171717 62%,
+      #171717 100%
+    );
+    background-size: 250% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: signature-sheen 5.5s ease-in-out infinite;
+  }
+
+  @keyframes signature-sheen {
+    0% {
+      background-position: 150% 0;
+    }
+    100% {
+      background-position: -50% 0;
+    }
+  }
+
   /* ---- Cards ---- */
   .card-marketing {
     @apply rounded-md bg-canvas p-lg shadow-level-3 transition-shadow duration-200;

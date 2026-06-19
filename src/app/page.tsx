@@ -113,7 +113,7 @@ export default function HomePage() {
       {/* ───────── Signature / quick links ───────── */}
       <section className="container-page py-4xl">
         <div className="flex flex-col items-center gap-md text-center">
-          <p className="gradient-text text-display-md italic">Sadab Munshi</p>
+          <p className="signature-shine text-display-md italic">Sadab Munshi</p>
           <p className="eyebrow">Learning by doing</p>
           <nav className="mt-md flex flex-wrap justify-center gap-lg">
             {["About", "Blog", "Projects", "Contact"].map((label) => (

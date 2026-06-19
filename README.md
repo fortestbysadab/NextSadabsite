@@ -116,13 +116,28 @@ The route, sitemap entry, and metadata are generated automatically.
 
 ---
 
-## 📨 Contact form
+## 📨 Contact form (Resend)
 
 `src/app/api/contact/route.ts` validates the payload (name/email/message, same
-rules as the old PHP). To actually deliver messages, add one of:
+rules as the old PHP) and sends a real email via [Resend](https://resend.com).
 
-- **Email** — [Resend](https://resend.com) / Postmark inside the `TODO` block.
-- **Database** — Vercel Postgres / KV, or any DB client.
+**Setup:**
+
+1. Create a free account at [resend.com](https://resend.com) and an API key.
+2. Copy `.env.example` → `.env.local` and fill in:
+   ```bash
+   RESEND_API_KEY=re_xxxxxxxx
+   CONTACT_TO=contact@sadabmunshi.online
+   CONTACT_FROM=Website <onboarding@resend.dev>   # or your verified domain
+   ```
+3. For production, **verify your domain** in Resend, then set
+   `CONTACT_FROM=Website <noreply@sadabmunshi.online>` so deliverability is solid.
+4. On Vercel, add the same three variables under
+   **Project → Settings → Environment Variables**.
+
+The form replies-to the sender's address, so you can answer directly from your
+inbox. If `RESEND_API_KEY` is missing, the API returns a friendly "email me
+directly" message instead of crashing.
 
 ---
 
