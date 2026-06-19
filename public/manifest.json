@@ -1,0 +1,21 @@
+{
+  "name": "Sadab Munshi",
+  "short_name": "Sadab",
+  "description": "Personal space of Sadab Munshi. Exploring ideas, building useful things, and sharing what I learn along the way.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#171717",
+  "icons": [
+    {
+      "src": "/assets/images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
