@@ -111,7 +111,8 @@ export async function POST(req: NextRequest) {
       console.error("[contact] Resend error:", error);
       return NextResponse.json({
         success: false,
-        message: "Something went wrong sending your message. Please try again.",
+        // Surface the real reason (helps diagnose sender/domain issues).
+        message: `Could not send: ${error.message || "email service error"}`,
       });
     }
 
