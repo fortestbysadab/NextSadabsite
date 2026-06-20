@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import { site } from "@/lib/site";
@@ -40,22 +41,37 @@ export default function AboutPage() {
 
       <PageHeader eyebrow="// about" title="About" />
 
-      <article className="prose-doc mt-2xl">
-        <p>
-          <strong>Hello, I am Sadab.</strong> I am a student who likes building
-          things on the internet. I spend most of my time learning how stuff
-          works, breaking things, and figuring out how to fix them.
-        </p>
-        <p>
-          I do not have it all figured out. I just build small things, write
-          about what I learn, and share it here. If you want to know what I am up
-          to right now, check the{" "}
-          <Link href="/now" className="link-inline">
-            now page
-          </Link>
-          .
-        </p>
-      </article>
+      {/* Intro split: portrait + story */}
+      <div className="mt-2xl grid items-start gap-2xl md:grid-cols-[260px_1fr]">
+        <figure className="overflow-hidden rounded-lg bg-primary shadow-level-4">
+          <Image
+            src="/assets/images/sadab-portrait.jpg"
+            alt="Portrait of Sadab Munshi"
+            width={1024}
+            height={1280}
+            priority
+            className="h-auto w-full object-cover"
+            sizes="(max-width: 768px) 100vw, 260px"
+          />
+        </figure>
+
+        <article className="prose-doc">
+          <p>
+            <strong>Hello, I am Sadab.</strong> I am a student who likes building
+            things on the internet. I spend most of my time learning how stuff
+            works, breaking things, and figuring out how to fix them.
+          </p>
+          <p>
+            I do not have it all figured out. I just build small things, write
+            about what I learn, and share it here. If you want to know what I am
+            up to right now, check the{" "}
+            <Link href="/now" className="link-inline">
+              now page
+            </Link>
+            .
+          </p>
+        </article>
+      </div>
 
       {/* About this site */}
       <div className="mt-2xl rounded-md bg-canvas p-lg shadow-level-2">

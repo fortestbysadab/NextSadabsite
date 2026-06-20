@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { footerNav, site } from "@/lib/site";
-import Logo from "./Logo";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -8,16 +7,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-hairline bg-canvas">
       <div className="container-page py-4xl">
-        <div className="grid grid-cols-1 gap-2xl md:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          {/* Brand column */}
-          <div className="flex flex-col gap-md">
-            <Logo />
-            <p className="max-w-xs text-body-sm text-body">
-              I learn by building things. Notes on what I make, break, and
-              figure out along the way.
-            </p>
-          </div>
-
+        <div className="grid grid-cols-2 gap-2xl sm:grid-cols-3">
           {/* Nav columns */}
           {footerNav.map((col) => (
             <div key={col.label} className="flex flex-col gap-sm">

@@ -13,12 +13,6 @@ const moods = [
 
 export default function HomePage() {
   const recent = getAllPosts().slice(0, 3);
-  const today = new Date().toLocaleDateString("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
   const mood = moods[new Date().getDate() % moods.length];
 
   return (
@@ -26,7 +20,6 @@ export default function HomePage() {
       {/* ───────── Hero ───────── */}
       <MeshHero>
         <div className="flex max-w-3xl flex-col gap-lg">
-          <p className="eyebrow">{today}</p>
           <h1 className="text-display-lg text-ink md:text-display-xl">
             I get curious. Then I build something.
           </h1>
