@@ -95,7 +95,6 @@ export default function ProjectsPage() {
   return (
     <div className="container-page py-4xl md:py-5xl">
       <PageHeader
-        eyebrow="// projects"
         title="Projects"
         description="Things I've built to learn, solve a problem, or just see if I could."
       />

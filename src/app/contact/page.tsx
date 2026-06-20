@@ -11,7 +11,6 @@ export default function ContactPage() {
   return (
     <div className="container-page max-w-content py-4xl md:py-5xl">
       <header className="flex flex-col gap-md">
-        <p className="eyebrow">// contact</p>
         <h1 className="text-display-lg text-ink md:text-display-xl">
           Get in touch.
         </h1>

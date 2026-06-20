@@ -24,11 +24,10 @@ export default function HomePage() {
             I get curious. Then I build something.
           </h1>
           <p className="max-w-prose text-body-lg text-body">
-            New technology feels like an unsolved puzzle. There&apos;s a quiet
-            satisfaction in pulling it apart — reading the docs, breaking
-            something, figuring out why — then building something small that makes
-            the chaos feel understood. This site collects what surfaces along the
-            way.
+            When I see new technology, I want to know how it works. So I read
+            about it, try things, break it sometimes, and then build something
+            small with it. This site is where I keep what I have built and
+            learned so far.
           </p>
           <div className="mt-xs flex flex-wrap gap-sm">
             <Link href="/projects" className="btn-primary">

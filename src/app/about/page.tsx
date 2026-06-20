@@ -39,7 +39,7 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
-      <PageHeader eyebrow="// about" title="About" />
+      <PageHeader title="About" />
 
       {/* Intro split: portrait + story */}
       <div className="mt-2xl grid items-start gap-2xl md:grid-cols-[260px_1fr]">

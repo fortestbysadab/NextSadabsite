@@ -39,7 +39,6 @@ export default function NowPage() {
   return (
     <div className="container-page max-w-content py-4xl md:py-5xl">
       <PageHeader
-        eyebrow="// now"
         title="Now"
         description="What I'm doing right now."
       />

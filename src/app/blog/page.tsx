@@ -16,7 +16,6 @@ export default function BlogIndexPage() {
   return (
     <div className="container-page py-4xl md:py-5xl">
       <PageHeader
-        eyebrow="// blog"
         title="Blog"
         description="Notes on paying attention. Published when clarity arrives."
       />

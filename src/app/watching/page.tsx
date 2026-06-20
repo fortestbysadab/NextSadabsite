@@ -64,7 +64,6 @@ export default function WatchingPage() {
   return (
     <div className="container-page max-w-content py-4xl md:py-5xl">
       <PageHeader
-        eyebrow="// watching"
         title="Watching"
         description="Movies and shows."
       />
