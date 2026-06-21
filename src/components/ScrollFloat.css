@@ -1,0 +1,25 @@
+.scroll-float {
+  overflow: hidden;
+  margin: 0;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  /* Sized for the design system; override with textClassName as needed. */
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -1.28px;
+  line-height: 1.25;
+}
+
+.char {
+  display: inline-block;
+}
+
+/* Respect reduced-motion: characters stay visible & in place. */
+@media (prefers-reduced-motion: reduce) {
+  .char {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

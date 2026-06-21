@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MeshHero from "@/components/MeshHero";
+import ScrollFloat from "@/components/ScrollFloat";
 import { getAllPosts } from "@/lib/posts";
 import { formatDateLong } from "@/lib/utils";
 
@@ -72,7 +73,17 @@ export default function HomePage() {
       <section className="border-t border-hairline bg-canvas-soft">
         <div className="container-page py-4xl">
           <div className="mb-xl flex items-baseline justify-between">
-            <h2 className="text-display-md text-ink">From the notebook</h2>
+            <ScrollFloat
+              containerClassName="text-ink"
+              textClassName="!text-[24px] md:!text-[32px] text-ink"
+              animationDuration={1}
+              ease="back.inOut(2)"
+              scrollStart="center bottom+=50%"
+              scrollEnd="bottom bottom-=40%"
+              stagger={0.03}
+            >
+              From the notebook
+            </ScrollFloat>
             <Link
               href="/blog"
               className="text-body-sm font-medium text-link transition-colors hover:text-link-deep"
