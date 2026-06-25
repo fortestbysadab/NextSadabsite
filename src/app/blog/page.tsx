@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import { getAllPosts } from "@/lib/posts";
@@ -21,27 +22,42 @@ export default function BlogIndexPage() {
       />
 
       <div className="mt-2xl grid gap-lg md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post, i) => (
+        {posts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="card-marketing group flex flex-col gap-sm"
+            className="card-marketing group flex flex-col gap-sm !p-0 overflow-hidden"
           >
-            <div className="flex items-center gap-sm">
-              <span className="font-mono text-caption text-mute">
-                {formatDate(post.date)}
-              </span>
-              {i === 0 && (
-                <span className="inline-flex items-center rounded-full bg-link-bg-soft px-xs py-px font-mono text-caption text-link-deep">
-                  New
+            {post.coverImage && (
+              <div className="relative aspect-[512/279] w-full overflow-hidden bg-canvas-soft-2">
+                <Image
+                  src={post.coverImage}
+                  alt={post.title}
+                  width={512}
+                  height={279}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+              </div>
+            )}
+
+            <div className="flex flex-1 flex-col gap-sm p-lg">
+              <div className="flex items-center gap-sm">
+                <span className="font-mono text-caption text-mute">
+                  {formatDate(post.date)}
                 </span>
-              )}
+                {post.isNew && (
+                  <span className="inline-flex items-center rounded-full bg-link-bg-soft px-xs py-px font-mono text-caption text-link-deep">
+                    New
+                  </span>
+                )}
+              </div>
+              <h2 className="text-display-sm text-ink">{post.title}</h2>
+              <p className="text-body-sm text-body">{post.excerpt}</p>
+              <span className="mt-auto inline-flex items-center gap-1 pt-xs text-body-sm font-medium text-link transition-all group-hover:gap-2">
+                Read more →
+              </span>
             </div>
-            <h2 className="text-display-sm text-ink">{post.title}</h2>
-            <p className="text-body-sm text-body">{post.excerpt}</p>
-            <span className="mt-auto inline-flex items-center gap-1 pt-xs text-body-sm font-medium text-link transition-all group-hover:gap-2">
-              Read more →
-            </span>
           </Link>
         ))}
       </div>

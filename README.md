@@ -13,7 +13,7 @@ Vercel-inspired design system. App Router · TypeScript · Tailwind CSS · Geist
 | `layout.php` + `includes/*.php`        | `src/app/layout.tsx` + `src/components/*`                 |
 | `config.php`                           | `src/lib/site.ts`                                          |
 | `pages/*.php` content                  | `src/app/*/page.tsx`                                       |
-| `pages/blog/*.php` (8 posts)           | `src/lib/posts.ts` + `src/app/blog/[slug]/page.tsx`      |
+| `pages/blog/*.php` (8 posts)           | `content/blog/*.mdx` (file-based MDX) + `src/app/blog/[slug]/page.tsx` |
 | `submit.php` + `db.php` (MySQL)        | `src/app/api/contact/route.ts` (validation + log)        |
 | Hand-rolled SEO meta in `layout.php`   | Next.js Metadata API + `sitemap.ts` / `robots.ts`        |
 | Newsreader/Manrope fonts              | **Geist + Geist Mono** (the design system's faces)        |
@@ -60,6 +60,10 @@ npm start
 ## 📁 Structure
 
 ```
+content/
+└── blog/                     # Blog posts as .mdx files (zero-code publishing)
+    ├── the-metric-trap.mdx
+    └── … (8 posts)
 src/
 ├── app/
 │   ├── layout.tsx            # Root layout: fonts, nav, footer, global metadata
@@ -79,40 +83,57 @@ src/
 │   ├── not-found.tsx         # 404
 │   ├── sitemap.ts
 │   └── robots.ts
-├── components/               # NavBar, Footer, Logo, MeshHero, PageHeader, Badge
+├── components/               # NavBar, Footer, Logo, MeshHero, PageHeader, Badge, MdxContent
 └── lib/
     ├── site.ts               # Site config, nav, social links
-    ├── posts.ts              # All blog content (migrated)
+    ├── posts.ts              # Reads content/blog/*.mdx (fs + gray-matter)
     └── utils.ts              # Date helpers
 public/
-├── assets/images/            # Favicons, logo, OG image (copied from PHP site)
+├── assets/images/            # Favicons, logo, OG image, portrait
+├── images/blog/              # Blog cover images (512×279)
 ├── resume/                   # Résumé PDF
 └── manifest.json
 ```
 
 ---
 
-## ✍️ Adding a blog post
+## ✍️ Adding a blog post (zero-code, MDX)
 
-Add an entry to the `posts` array in [`src/lib/posts.ts`](./src/lib/posts.ts):
+Posts are plain `.mdx` files in [`content/blog/`](./content/blog). To publish:
 
-```ts
-{
-  slug: "my-new-post",
-  title: "My New Post",
-  date: "2026-06-19",
-  modified: "2026-06-19",
-  readingTime: "4 min read",
-  excerpt: "One-line summary for cards.",
-  description: "SEO description.",
-  body: `<p class="lead">Opening paragraph…</p><h2>A section</h2><p>…</p>`,
-},
-```
+1. **Create** `content/blog/my-new-post.mdx` (the filename becomes the URL slug):
 
-The route, sitemap entry, and metadata are generated automatically.
+   ```mdx
+   ---
+   title: "My New Post"
+   date: "2026-06-19"
+   modified: "2026-06-19"
+   readingTime: "4 min read"
+   excerpt: "One-line summary shown on cards."
+   description: "SEO meta description."
+   coverImage: "/images/blog/my-new-post.png"
+   published: true
+   ---
 
-> For a richer authoring workflow you can later swap `body` strings for MDX —
-> the page component just renders the post body.
+   Opening paragraph in plain Markdown.
+
+   ## A section
+
+   More text, **bold**, *italic*, [links](https://example.com), lists — all MDX.
+   ```
+
+2. **Drop the cover image** at `public/images/blog/my-new-post.png`
+   (displayed at 512×279 on cards, full-width on the post page).
+
+3. **`git push`** → Vercel auto-deploys. No code changes.
+
+Notes:
+
+- `published: false` (or omitting it as `false`) hides a draft from the site.
+- The newest post by `date` automatically gets the **New** badge (`isNew`).
+- Posts are read at build time with `fs` + `gray-matter`; the body is compiled
+  with `next-mdx-remote/rsc`. Routes, sitemap, and SEO metadata are generated
+  automatically from frontmatter.
 
 ---
 

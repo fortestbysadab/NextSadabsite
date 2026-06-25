@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { formatDate } from "@/lib/utils";
 import { site } from "@/lib/site";
+import MdxContent from "@/components/MdxContent";
 
 type Params = { params: { slug: string } };
 
@@ -46,7 +48,9 @@ export default function BlogPostPage({ params }: Params) {
     "@type": "Article",
     headline: post.title,
     url: `${site.url}/blog/${post.slug}`,
-    image: `${site.url}/assets/images/og-image.png`,
+    image: post.coverImage
+      ? `${site.url}${post.coverImage}`
+      : `${site.url}/assets/images/og-image.png`,
     datePublished: post.date,
     dateModified: post.modified,
     author: { "@type": "Person", name: site.author },
@@ -76,10 +80,23 @@ export default function BlogPostPage({ params }: Params) {
           </h1>
         </header>
 
-        <div
-          className="prose-doc mt-2xl"
-          dangerouslySetInnerHTML={{ __html: post.body }}
-        />
+        {post.coverImage && (
+          <div className="mt-2xl overflow-hidden rounded-lg bg-canvas-soft-2 shadow-level-3">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              width={1024}
+              height={558}
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="h-auto w-full object-cover"
+            />
+          </div>
+        )}
+
+        <div className="mt-2xl">
+          <MdxContent source={post.content} />
+        </div>
 
         <hr className="my-3xl border-0 border-t border-hairline" />
 
