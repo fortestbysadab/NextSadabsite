@@ -33,29 +33,29 @@ const copilots = [
 
 export default function AboutPage() {
   return (
-    <div className="container-page max-w-content py-4xl md:py-5xl">
+    <div className="container-page py-4xl md:py-5xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
-      <PageHeader title="About" />
+      <div className="max-w-content">
+        <PageHeader title="About" />
 
-      {/* Intro split: portrait + story */}
-      <div className="mt-2xl grid items-start gap-2xl md:grid-cols-[260px_1fr]">
-        <figure className="overflow-hidden rounded-lg bg-primary shadow-level-4">
+        {/* Small portrait above the intro */}
+        <figure className="mt-2xl">
           <Image
             src="/assets/images/sadab-portrait.jpg"
             alt="Portrait of Sadab Munshi"
-            width={1024}
-            height={1280}
+            width={112}
+            height={112}
             priority
-            className="h-auto w-full object-cover"
-            sizes="(max-width: 768px) 100vw, 260px"
+            sizes="112px"
+            className="h-28 w-28 rounded-full object-cover shadow-level-3 ring-1 ring-hairline"
           />
         </figure>
 
-        <article className="prose-doc">
+        <article className="prose-doc mt-lg">
           <p>
             <strong>Hello, I am Sadab.</strong> I am a student who likes building
             things on the internet. I spend most of my time learning how stuff
@@ -71,7 +71,6 @@ export default function AboutPage() {
             .
           </p>
         </article>
-      </div>
 
       {/* About this site */}
       <div className="mt-2xl rounded-md bg-canvas p-lg shadow-level-2">
@@ -145,6 +144,7 @@ export default function AboutPage() {
           </svg>
           Download Résumé
         </a>
+      </div>
       </div>
     </div>
   );

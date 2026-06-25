@@ -37,7 +37,8 @@ const notDoing = [
 
 export default function NowPage() {
   return (
-    <div className="container-page max-w-content py-4xl md:py-5xl">
+    <div className="container-page py-4xl md:py-5xl">
+      <div className="max-w-content">
       <PageHeader
         title="Now"
         description="What I'm doing right now."
@@ -98,6 +99,7 @@ export default function NowPage() {
           See what I&apos;m watching →
         </Link>
       </p>
+      </div>
     </div>
   );
 }

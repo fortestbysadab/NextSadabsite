@@ -57,57 +57,62 @@ export default function BlogPostPage({ params }: Params) {
   };
 
   return (
-    <div className="container-page max-w-content py-4xl md:py-5xl">
+    <div className="container-page py-4xl md:py-5xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <Link
-        href="/blog"
-        className="inline-flex items-center gap-1 text-body-sm text-body transition-colors hover:text-ink"
-      >
-        ← All writing
-      </Link>
+      <article>
+        {/* Text column — left-aligned, readable width */}
+        <div className="max-w-prose">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1 text-body-sm text-body transition-colors hover:text-ink"
+          >
+            ← All writing
+          </Link>
 
-      <article className="mt-xl">
-        <header className="flex flex-col gap-md border-b border-hairline pb-xl">
-          <p className="font-mono text-caption text-mute">
-            {formatDate(post.date)} · {post.readingTime}
-          </p>
-          <h1 className="text-display-lg text-ink md:text-display-xl">
-            {post.title}
-          </h1>
-        </header>
+          <header className="mt-xl flex flex-col gap-md border-b border-hairline pb-xl">
+            <p className="font-mono text-caption text-mute">
+              {formatDate(post.date)} · {post.readingTime}
+            </p>
+            <h1 className="text-display-lg text-ink md:text-display-xl">
+              {post.title}
+            </h1>
+          </header>
+        </div>
 
+        {/* Cover image — breaks out to full container width */}
         {post.coverImage && (
           <div className="mt-2xl overflow-hidden rounded-lg bg-canvas-soft-2 shadow-level-3">
             <Image
               src={post.coverImage}
               alt={post.title}
-              width={1024}
-              height={558}
+              width={1400}
+              height={762}
               priority
-              sizes="(max-width: 768px) 100vw, 768px"
+              sizes="(max-width: 1400px) 100vw, 1400px"
               className="h-auto w-full object-cover"
             />
           </div>
         )}
 
-        <div className="mt-2xl">
+        {/* Body — back to readable column width */}
+        <div className="mt-2xl max-w-prose">
           <MdxContent source={post.content} />
+
+          <hr className="my-3xl border-0 border-t border-hairline" />
+
+          <p className="text-body-md text-body">
+            Thanks for reading. If this resonated with you, I&apos;d love to hear
+            about what you&apos;re building.{" "}
+            <Link href="/contact" className="link-inline">
+              Get in touch
+            </Link>
+            .
+          </p>
         </div>
-
-        <hr className="my-3xl border-0 border-t border-hairline" />
-
-        <p className="text-body-md text-body">
-          Thanks for reading. If this resonated with you, I&apos;d love to hear
-          about what you&apos;re building.{" "}
-          <Link href="/contact" className="link-inline">
-            Get in touch
-          </Link>
-          .
-        </p>
       </article>
     </div>
   );

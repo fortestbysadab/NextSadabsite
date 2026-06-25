@@ -54,9 +54,6 @@ export default function BlogIndexPage() {
               </div>
               <h2 className="text-display-sm text-ink">{post.title}</h2>
               <p className="text-body-sm text-body">{post.excerpt}</p>
-              <span className="mt-auto inline-flex items-center gap-1 pt-xs text-body-sm font-medium text-link transition-all group-hover:gap-2">
-                Read more →
-              </span>
             </div>
           </Link>
         ))}
