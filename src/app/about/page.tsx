@@ -39,7 +39,7 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
-      <div className="max-w-content">
+      <div className="mx-auto max-w-2xl">
         <PageHeader title="About" />
 
         {/* Small portrait above the intro */}

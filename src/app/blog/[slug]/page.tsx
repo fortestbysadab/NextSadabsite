@@ -64,8 +64,8 @@ export default function BlogPostPage({ params }: Params) {
       />
 
       <article>
-        {/* Text column — left-aligned, readable width */}
-        <div className="max-w-prose">
+        {/* Text column — centered, readable width */}
+        <div className="mx-auto max-w-2xl">
           <Link
             href="/blog"
             className="inline-flex items-center gap-1 text-body-sm text-body transition-colors hover:text-ink"
@@ -98,8 +98,8 @@ export default function BlogPostPage({ params }: Params) {
           </div>
         )}
 
-        {/* Body — back to readable column width */}
-        <div className="mt-2xl max-w-prose">
+        {/* Body — centered, readable column width */}
+        <div className="mx-auto mt-2xl max-w-2xl">
           <MdxContent source={post.content} />
 
           <hr className="my-3xl border-0 border-t border-hairline" />

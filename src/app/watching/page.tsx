@@ -63,7 +63,7 @@ const watching: Section[] = [
 export default function WatchingPage() {
   return (
     <div className="container-page py-4xl md:py-5xl">
-      <div className="max-w-content">
+      <div className="mx-auto max-w-2xl">
       <PageHeader
         title="Watching"
         description="Movies and shows."
