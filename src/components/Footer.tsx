@@ -34,14 +34,11 @@ export default function Footer() {
 
         <div className="mt-3xl flex flex-col items-start justify-between gap-md border-t border-hairline pt-lg sm:flex-row sm:items-center">
           <div className="flex items-center gap-sm">
-            <Logo />
+            <Logo shape="circle" />
             <p className="font-mono text-caption text-mute">
               © {year} {site.name}
             </p>
           </div>
-          <p className="font-mono text-caption text-mute">
-            Built with Next.js — deployed on the edge.
-          </p>
         </div>
       </div>
     </footer>

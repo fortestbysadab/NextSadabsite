@@ -107,17 +107,6 @@ export default function HomePage() {
         <div className="flex flex-col items-center gap-md text-center">
           <p className="signature-shine text-display-md italic">Sadab Munshi</p>
           <p className="eyebrow">Learning by doing</p>
-          <nav className="mt-md flex flex-wrap justify-center gap-lg">
-            {["About", "Blog", "Projects", "Contact"].map((label) => (
-              <Link
-                key={label}
-                href={`/${label.toLowerCase()}`}
-                className="text-body-sm font-medium text-body transition-colors hover:text-link"
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
         </div>
       </section>
     </>
