@@ -53,9 +53,9 @@ export default function HomePage() {
               <Link href="/projects" className="link-inline">
                 things I&apos;ve built along the way
               </Link>
-              , and a{" "}
-              <Link href="/now" className="link-inline">
-                page about what&apos;s occupying my attention right now
+              , and an{" "}
+              <Link href="/about" className="link-inline">
+                about page with what&apos;s occupying my attention right now
               </Link>
               . It&apos;s a work in progress — like me.
             </p>

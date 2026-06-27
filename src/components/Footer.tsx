@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { footerNav, site } from "@/lib/site";
+import Logo from "./Logo";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -32,9 +33,12 @@ export default function Footer() {
         </div>
 
         <div className="mt-3xl flex flex-col items-start justify-between gap-md border-t border-hairline pt-lg sm:flex-row sm:items-center">
-          <p className="font-mono text-caption text-mute">
-            © {year} {site.name}
-          </p>
+          <div className="flex items-center gap-sm">
+            <Logo />
+            <p className="font-mono text-caption text-mute">
+              © {year} {site.name}
+            </p>
+          </div>
           <p className="font-mono text-caption text-mute">
             Built with Next.js — deployed on the edge.
           </p>

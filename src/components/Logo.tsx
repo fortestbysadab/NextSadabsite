@@ -1,23 +1,31 @@
+import Image from "next/image";
 import Link from "next/link";
 
 /**
- * Wordmark logo. The original site used a "S.M." monogram image;
- * we render it as type to keep it crisp and dependency-free.
+ * Logo — the "S.M." monogram SVG rendered inside the brand's dark rounded badge.
+ * Icon only (no wordmark).
  */
 export default function Logo({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
       aria-label="Sadab Munshi — Home"
-      className={`inline-flex items-center gap-2 font-sans text-[15px] font-semibold tracking-[-0.04em] text-ink ${className}`}
+      className={`inline-flex items-center ${className}`}
     >
       <span
         aria-hidden
-        className="grid h-7 w-7 place-items-center rounded-md bg-primary text-[12px] font-semibold text-on-primary"
+        className="grid h-8 w-8 place-items-center rounded-md bg-primary p-1.5"
       >
-        SM
+        <Image
+          src="/assets/images/s-m.monogram.svg"
+          alt=""
+          width={20}
+          height={20}
+          className="h-full w-full object-contain"
+          priority
+        />
       </span>
-      <span>Sadab Munshi</span>
+      <span className="sr-only">Sadab Munshi</span>
     </Link>
   );
 }
