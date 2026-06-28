@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import PostHogProvider from "@/components/PostHogProvider";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -71,9 +72,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <NavBar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <PostHogProvider>
+          <NavBar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </PostHogProvider>
         <Analytics />
       </body>
     </html>
