@@ -52,12 +52,6 @@ const nowDoing = [
   <>Trying to read more and scroll less</>,
 ];
 
-const nowNotDoing = [
-  "Chasing every new trend",
-  "Building things I wouldn't use myself",
-  "Trying to optimize everything",
-];
-
 export default function AboutPage() {
   return (
     <div className="container-page py-4xl md:py-5xl">
@@ -69,25 +63,28 @@ export default function AboutPage() {
       <div className="mx-auto max-w-2xl">
         <PageHeader title="About" />
 
-        {/* Small portrait above the intro */}
-        <figure className="mt-2xl">
+        {/* Intro: portrait left, text right */}
+        <div className="mt-2xl flex flex-col items-start gap-lg sm:flex-row sm:items-center">
           <Image
             src="/assets/images/sadab-portrait.jpg"
             alt="Portrait of Sadab Munshi"
-            width={112}
-            height={112}
+            width={96}
+            height={96}
             priority
-            sizes="112px"
-            className="h-28 w-28 rounded-full object-cover shadow-level-3 ring-1 ring-hairline"
+            sizes="96px"
+            className="h-24 w-24 shrink-0 rounded-full object-cover shadow-level-3 ring-1 ring-hairline"
           />
-        </figure>
+
+          <article className="prose-doc">
+            <p>
+              <strong>Hello, I am Sadab.</strong> I am a student who likes
+              building things on the internet. I spend most of my time learning
+              how stuff works, breaking things, and figuring out how to fix them.
+            </p>
+          </article>
+        </div>
 
         <article className="prose-doc mt-lg">
-          <p>
-            <strong>Hello, I am Sadab.</strong> I am a student who likes building
-            things on the internet. I spend most of my time learning how stuff
-            works, breaking things, and figuring out how to fix them.
-          </p>
           <p>
             I do not have it all figured out. I just build small things, write
             about what I learn, and share it here. What I&apos;m focused on right
@@ -117,30 +114,16 @@ export default function AboutPage() {
             idea. No endless feeds, just what matters now.
           </p>
 
-          <div className="mt-lg grid gap-lg md:grid-cols-2">
-            <div className="rounded-md bg-canvas p-lg shadow-level-2">
-              <h3 className="text-display-sm text-ink">Currently</h3>
-              <ul className="mt-md flex flex-col gap-sm">
-                {nowDoing.map((a, i) => (
-                  <li key={i} className="flex gap-sm text-body-md text-body">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-link" />
-                    <span>{a}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="rounded-md bg-canvas-soft p-lg">
-              <h3 className="text-display-sm text-ink">Not Doing</h3>
-              <ul className="mt-md flex flex-col gap-sm">
-                {nowNotDoing.map((a) => (
-                  <li key={a} className="flex gap-sm text-body-md text-body">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-hairline-strong" />
-                    <span>{a}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="mt-lg rounded-md bg-canvas p-lg shadow-level-2">
+            <h3 className="text-display-sm text-ink">Currently</h3>
+            <ul className="mt-md flex flex-col gap-sm">
+              {nowDoing.map((a, i) => (
+                <li key={i} className="flex gap-sm text-body-md text-body">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-link" />
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <p className="mt-md text-body-sm text-body">
