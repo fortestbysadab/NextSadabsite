@@ -29,25 +29,25 @@ export default function NavBar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-hairline bg-canvas/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-rule bg-bone/80 backdrop-blur-md">
       <nav
         aria-label="Main navigation"
-        className="container-page flex h-16 items-center justify-between gap-md"
+        className="container-journal flex h-16 items-center justify-between gap-4"
       >
         <Logo />
 
-        {/* Desktop links — centered ghost pills */}
-        <ul className="hidden items-center gap-xxs md:flex">
+        {/* Desktop links — uppercase tracked */}
+        <ul className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => {
             const active = isActive(pathname, item.href);
             return (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`rounded-full px-sm py-xs text-body-sm transition-colors ${
+                  className={`font-sans text-[12px] font-medium uppercase tracking-[0.12em] underline-offset-[6px] transition-colors ${
                     active
-                      ? "bg-canvas-soft-2 text-ink"
-                      : "text-body hover:bg-canvas-soft hover:text-ink"
+                      ? "text-ink underline decoration-electric"
+                      : "text-ink-mute hover:text-ink"
                   }`}
                 >
                   {item.label}
@@ -58,16 +58,16 @@ export default function NavBar() {
         </ul>
 
         {/* Desktop CTA cluster */}
-        <div className="hidden items-center gap-xs md:flex">
+        <div className="hidden items-center gap-4 md:flex">
           <Link
             href={site.resumeFile}
-            className="flex h-7 items-center rounded-sm border border-hairline bg-canvas px-xs text-body-sm font-medium text-ink transition-colors hover:bg-canvas-soft"
+            className="font-sans text-[12px] font-medium uppercase tracking-[0.12em] text-ink-mute transition-colors hover:text-ink"
           >
             Résumé
           </Link>
           <Link
             href="/contact"
-            className="flex h-7 items-center rounded-sm bg-primary px-xs text-body-sm font-medium text-on-primary transition-colors hover:bg-[#383838]"
+            className="flex h-9 items-center border border-ink bg-ink px-4 font-sans text-[12px] font-medium uppercase tracking-[0.12em] text-on-primary transition-colors hover:bg-transparent hover:text-ink"
           >
             Get in touch
           </Link>
@@ -79,7 +79,7 @@ export default function NavBar() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="grid h-9 w-9 place-items-center rounded-sm border border-hairline text-ink md:hidden"
+          className="grid h-9 w-9 place-items-center border border-rule-strong text-ink md:hidden"
         >
           {open ? (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -98,16 +98,16 @@ export default function NavBar() {
 
       {/* Mobile full overlay */}
       {open && (
-        <div className="fixed inset-x-0 top-16 z-40 h-[calc(100vh-4rem)] bg-canvas md:hidden">
-          <ul className="container-page flex flex-col gap-xxs py-lg">
+        <div className="fixed inset-x-0 top-16 z-40 h-[calc(100vh-4rem)] bg-bone md:hidden">
+          <ul className="container-journal flex flex-col py-6">
             {navItems.map((item) => {
               const active = isActive(pathname, item.href);
               return (
-                <li key={item.href}>
+                <li key={item.href} className="border-b border-rule">
                   <Link
                     href={item.href}
-                    className={`block rounded-md px-md py-sm text-display-sm ${
-                      active ? "bg-canvas-soft-2 text-ink" : "text-body"
+                    className={`block py-5 font-serif text-[28px] ${
+                      active ? "text-electric" : "text-ink"
                     }`}
                   >
                     {item.label}
@@ -115,11 +115,11 @@ export default function NavBar() {
                 </li>
               );
             })}
-            <li className="mt-md flex gap-xs px-md">
-              <Link href={site.resumeFile} className="btn-secondary-sm flex-1">
+            <li className="mt-8 flex gap-4">
+              <Link href={site.resumeFile} className="journal-btn-ghost flex-1">
                 Résumé
               </Link>
-              <Link href="/contact" className="btn-primary-sm flex-1">
+              <Link href="/contact" className="journal-btn flex-1">
                 Get in touch
               </Link>
             </li>
