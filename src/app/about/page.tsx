@@ -19,9 +19,8 @@ const personSchema = {
 };
 
 // ── Now ───────────────────────────────────────────────────────────
-const nowLastUpdated = "February 2026";
-
 const nowDoing = [
+  <>Student. Trying to figure out how things work before I run out of time to be curious.</>,
   <>
     Working on{" "}
     <a
@@ -30,9 +29,9 @@ const nowDoing = [
       rel="noopener noreferrer"
       className="link-inline"
     >
-      a personal finance tool
+      a project
     </a>{" "}
-    that tracks money without you having to think about it
+    in the finance space
   </>,
   <>Trying to understand how financial systems actually work underneath</>,
   <>Writing about what I learn, including the parts that didn&apos;t go as planned</>,
@@ -79,12 +78,7 @@ export default function AboutPage() {
 
         {/* ── Now ────────────────────────────────────────────────── */}
         <section className="mt-3xl">
-          <div className="flex items-baseline justify-between gap-sm">
-            <h2 className="text-display-md text-ink">Now</h2>
-            <span className="font-mono text-caption text-mute">
-              Updated {nowLastUpdated}
-            </span>
-          </div>
+          <h2 className="text-display-md text-ink">Now</h2>
           <p className="mt-sm text-body-md text-body">
             What I&apos;m focused on at the moment. A{" "}
             <a
