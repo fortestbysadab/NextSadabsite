@@ -36,7 +36,7 @@ export default function Footer() {
           <div className="flex items-center gap-sm">
             <Logo shape="circle" />
             <p className="font-mono text-caption text-mute">
-              © {year} {site.name}
+              © {year} {site.name}. All rights reserved.
             </p>
           </div>
         </div>

@@ -21,7 +21,7 @@ export default function HomePage() {
       <MeshHero>
         <div className="flex max-w-3xl flex-col gap-lg">
           <h1 className="text-display-lg text-ink md:text-display-xl">
-            I get curious. Then I build something.
+            I get curious. <br className="sm:hidden" />Then I build something.
           </h1>
           <p className="max-w-prose text-body-lg text-body">
             When I see new technology, I want to know how it works. So I read
