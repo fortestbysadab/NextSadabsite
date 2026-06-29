@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Sadab Munshi — builds things on the internet to understand how they work, then writes about what he finds. Here's what he's working on right now.",
+    "Sadab Munshi — a student trying to understand how money and systems work. He builds small things to figure things out, then writes about what he finds.",
 };
 
 const personSchema = {
@@ -23,19 +23,19 @@ const nowLastUpdated = "February 2026";
 
 const nowDoing = [
   <>
-    Building{" "}
+    Working on{" "}
     <a
       href="https://app.sadabmunshi.online"
       target="_blank"
       rel="noopener noreferrer"
       className="link-inline"
     >
-      a finance app
+      a personal finance tool
     </a>{" "}
-    — a personal money tool that does the tracking for you
+    that tracks money without you having to think about it
   </>,
-  <>Digging into how systems work — money, software, the stuff underneath</>,
-  <>Writing about what I build, and what breaks while I build it</>,
+  <>Trying to understand how financial systems actually work underneath</>,
+  <>Writing about what I learn, including the parts that didn&apos;t go as planned</>,
   <>Reading more. Scrolling less.</>,
 ];
 
@@ -65,8 +65,7 @@ export default function AboutPage() {
           <article className="prose-doc">
             <p>
               <strong>
-                I&apos;m Sadab. I take things apart to figure out how they work,
-                then build my own version.
+                I&apos;m Sadab. I got curious about how money works and haven&apos;t stopped pulling on that thread.
               </strong>
             </p>
           </article>
@@ -74,10 +73,7 @@ export default function AboutPage() {
 
         <article className="prose-doc mt-lg">
           <p>
-            Mostly that means software — apps, tools, small experiments that
-            scratch a real itch. I build to understand, and I write down what I
-            learn so it sticks. Some of it works. Some of it breaks. Both are
-            useful.
+            I&apos;m a student. Finance is what I keep coming back to — how systems are built, how money moves, why most tools for managing it feel like they were made for someone else. When something doesn&apos;t make sense to me, I try to make a small version of it myself. Writing is how I make sure I actually understood it.
           </p>
         </article>
 
@@ -90,7 +86,7 @@ export default function AboutPage() {
             </span>
           </div>
           <p className="mt-sm text-body-md text-body">
-            What I&apos;m focused on at the moment — a{" "}
+            What I&apos;m focused on at the moment. A{" "}
             <a
               href="https://nownownow.com/about"
               target="_blank"
