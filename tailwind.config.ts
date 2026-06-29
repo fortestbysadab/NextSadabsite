@@ -39,31 +39,10 @@ const config: Config = {
         "cyan-deep": "#29bc9b",
         "highlight-pink": "#ff0080",
         "highlight-magenta": "#eb367f",
-        // ── "Curator's Journal" editorial palette ──
-        bone: "#f9f9f9",
-        "bone-2": "#f3f3f3",
-        "bone-3": "#eeeeee",
-        "ink-soft": "#444748",
-        "ink-mute": "#747878",
-        "rule": "#e5e5e5",
-        "rule-strong": "#c4c7c7",
-        electric: "#0058be",
-        "electric-bright": "#2170e4",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "Inter", "system-ui", "-apple-system", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "monospace"],
-        // Editorial serif for "Curator's Journal" headlines (system stack — no download).
-        serif: [
-          "EB Garamond",
-          "Hoefler Text",
-          "Iowan Old Style",
-          "Apple Garamond",
-          "Baskerville",
-          "Georgia",
-          "Times New Roman",
-          "serif",
-        ],
       },
       fontSize: {
         // [size, { lineHeight, letterSpacing, fontWeight }]
