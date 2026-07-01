@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { site } from "@/lib/site";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [feedback, setFeedback] = useState("");
+  const { t } = useLanguage();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -19,7 +21,7 @@ export default function ContactForm() {
 
     if (!name || !email || !message) {
       setStatus("error");
-      setFeedback("Please fill in all fields.");
+      setFeedback(t.contact.errorFill);
       return;
     }
 
@@ -39,11 +41,11 @@ export default function ContactForm() {
         form.reset();
       } else {
         setStatus("error");
-        setFeedback(json.message || "Something went wrong. Please try again.");
+        setFeedback(json.message || t.contact.errorGeneric);
       }
     } catch {
       setStatus("error");
-      setFeedback("Something went wrong. Please try again.");
+      setFeedback(t.contact.errorGeneric);
     }
   }
 
@@ -58,7 +60,7 @@ export default function ContactForm() {
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <p className="text-display-sm text-ink">Message sent.</p>
+        <p className="text-display-sm text-ink">{t.contact.successTitle}</p>
         <p className="max-w-prose text-body-md text-body">{feedback}</p>
       </div>
     );
@@ -75,13 +77,13 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-md">
         <div className="flex flex-col gap-xs">
           <label htmlFor="name" className="text-body-sm font-medium text-ink">
-            Your Name
+            {t.contact.nameLabel}
           </label>
           <input
             id="name"
             name="name"
             type="text"
-            placeholder="John Doe"
+            placeholder={t.contact.namePlaceholder}
             required
             className={inputClass}
           />
@@ -89,13 +91,13 @@ export default function ContactForm() {
 
         <div className="flex flex-col gap-xs">
           <label htmlFor="email" className="text-body-sm font-medium text-ink">
-            Email Address
+            {t.contact.emailLabel}
           </label>
           <input
             id="email"
             name="email"
             type="email"
-            placeholder="john@example.com"
+            placeholder={t.contact.emailPlaceholder}
             required
             className={inputClass}
           />
@@ -103,12 +105,12 @@ export default function ContactForm() {
 
         <div className="flex flex-col gap-xs">
           <label htmlFor="message" className="text-body-sm font-medium text-ink">
-            Your Message
+            {t.contact.messageLabel}
           </label>
           <textarea
             id="message"
             name="message"
-            placeholder="Tell me what is on your mind..."
+            placeholder={t.contact.messagePlaceholder}
             required
             rows={6}
             className="w-full rounded-sm border border-hairline bg-canvas px-sm py-sm text-body-md text-ink placeholder:text-mute transition-colors focus:border-hairline-strong focus:outline-none focus:ring-2 focus:ring-link/20"
@@ -120,14 +122,13 @@ export default function ContactForm() {
           disabled={status === "submitting"}
           className="btn-primary mt-xs w-full disabled:cursor-not-allowed disabled:opacity-65"
         >
-          {status === "submitting" ? "Sending…" : "Send Message"}
+          {status === "submitting" ? t.contact.sending : t.contact.send}
         </button>
       </form>
 
-      {/* Divider */}
       <div className="my-lg flex items-center gap-sm text-body-sm text-mute">
         <span className="h-px flex-1 bg-hairline" />
-        <span>or</span>
+        <span>{t.contact.orLabel}</span>
         <span className="h-px flex-1 bg-hairline" />
       </div>
 
@@ -135,13 +136,13 @@ export default function ContactForm() {
         <a
           href={`mailto:${site.email}`}
           className="inline-flex items-center gap-2 text-body-sm font-medium text-body transition-colors hover:text-link"
-          aria-label="Email me directly"
+          aria-label={t.contact.emailDirect}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <rect x="2" y="4" width="20" height="16" rx="2" />
             <polyline points="2,4 12,13 22,4" />
           </svg>
-          Email me directly
+          {t.contact.emailDirect}
         </a>
       </div>
     </>

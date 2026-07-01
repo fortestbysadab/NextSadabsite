@@ -4,28 +4,33 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { navItems, site } from "@/lib/site";
+import { useLanguage } from "@/context/LanguageContext";
 import Logo from "./Logo";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function isActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href + "/");
 }
 
+const NAV_LABEL_KEYS: Record<string, keyof ReturnType<typeof useLanguage>["t"]["nav"]> = {
+  "/": "home",
+  "/about": "about",
+  "/blog": "blog",
+  "/projects": "projects",
+  "/contact": "contact",
+};
+
 export default function NavBar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  useEffect(() => { setOpen(false); }, [pathname]);
 
-  // Lock scroll when overlay is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   return (
@@ -36,10 +41,12 @@ export default function NavBar() {
       >
         <Logo />
 
-        {/* Desktop links — centered ghost pills */}
+        {/* Desktop nav links */}
         <ul className="hidden items-center gap-xxs md:flex">
           {navItems.map((item) => {
             const active = isActive(pathname, item.href);
+            const labelKey = NAV_LABEL_KEYS[item.href];
+            const label = labelKey ? t.nav[labelKey] : item.label;
             return (
               <li key={item.href}>
                 <Link
@@ -50,7 +57,7 @@ export default function NavBar() {
                       : "text-body hover:bg-canvas-soft hover:text-ink"
                   }`}
                 >
-                  {item.label}
+                  {label}
                 </Link>
               </li>
             );
@@ -59,17 +66,18 @@ export default function NavBar() {
 
         {/* Desktop CTA cluster */}
         <div className="hidden items-center gap-xs md:flex">
+          <LanguageSwitcher />
           <Link
             href={site.resumeFile}
             className="flex h-7 items-center rounded-sm border border-hairline bg-canvas px-xs text-body-sm font-medium text-ink transition-colors hover:bg-canvas-soft"
           >
-            Résumé
+            {t.nav.resume}
           </Link>
           <Link
             href="/contact"
             className="flex h-7 items-center rounded-sm bg-primary px-xs text-body-sm font-medium text-on-primary transition-colors hover:bg-[#383838]"
           >
-            Get in touch
+            {t.nav.getInTouch}
           </Link>
         </div>
 
@@ -102,6 +110,8 @@ export default function NavBar() {
           <ul className="container-page flex flex-col gap-xxs py-lg">
             {navItems.map((item) => {
               const active = isActive(pathname, item.href);
+              const labelKey = NAV_LABEL_KEYS[item.href];
+              const label = labelKey ? t.nav[labelKey] : item.label;
               return (
                 <li key={item.href}>
                   <Link
@@ -110,18 +120,21 @@ export default function NavBar() {
                       active ? "bg-canvas-soft-2 text-ink" : "text-body"
                     }`}
                   >
-                    {item.label}
+                    {label}
                   </Link>
                 </li>
               );
             })}
             <li className="mt-md flex gap-xs px-md">
               <Link href={site.resumeFile} className="btn-secondary-sm flex-1">
-                Résumé
+                {t.nav.resume}
               </Link>
               <Link href="/contact" className="btn-primary-sm flex-1">
-                Get in touch
+                {t.nav.getInTouch}
               </Link>
+            </li>
+            <li className="mt-sm flex justify-center px-md">
+              <LanguageSwitcher />
             </li>
           </ul>
         </div>

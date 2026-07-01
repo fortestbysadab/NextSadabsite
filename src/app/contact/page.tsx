@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ContactForm from "./ContactForm";
+import ContactPageContent from "./ContactPageContent";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -8,21 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return (
-    <div className="container-page max-w-content py-4xl md:py-5xl">
-      <header className="flex flex-col gap-md">
-        <h1 className="text-display-lg text-ink md:text-display-xl">
-          Get in touch.
-        </h1>
-        <p className="max-w-prose text-body-lg text-body">
-          Have a question or just want to say hello? I would love to hear from
-          you.
-        </p>
-      </header>
-
-      <div className="mt-2xl rounded-lg bg-canvas p-xl shadow-level-4">
-        <ContactForm />
-      </div>
-    </div>
-  );
+  return <ContactPageContent />;
 }
