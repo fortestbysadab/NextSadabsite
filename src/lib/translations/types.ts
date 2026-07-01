@@ -32,6 +32,7 @@ export type Translations = {
     readMore: string;
     notesLabel: string;
     tagline: string;
+    signature: string;
     moods: string[];
   };
 

@@ -35,6 +35,7 @@ export const en: Translations = {
     readMore: "Read more →",
     notesLabel: "notes from that exploration",
     tagline: "Learning by doing",
+    signature: "Curious mind. Builder's hands.",
     moods: [
       "Currently trying to understand something I've never touched before. That's the good part.",
       "Broke something interesting today. Now I know more.",
