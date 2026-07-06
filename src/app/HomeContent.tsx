@@ -71,7 +71,7 @@ export default function HomeContent({ posts }: { posts: BlogPostMeta[] }) {
         <div className="container-page py-24 md:py-32">
           <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
             <div className="prose-doc max-w-prose">
-              <p className="font-serif text-display-sm text-forest">
+              <p className="font-serif text-lg md:text-display-sm text-forest">
                 {t.home.introBody}
               </p>
             </div>
@@ -81,7 +81,7 @@ export default function HomeContent({ posts }: { posts: BlogPostMeta[] }) {
                 <Leaf strokeWidth={1.5} className="h-3.5 w-3.5 text-sage" />
                 {t.home.todayNote}
               </p>
-              <p className="font-serif text-display-sm italic text-forest">
+              <p className="font-serif text-lg md:text-display-sm italic text-forest">
                 {mood}
               </p>
             </aside>
