@@ -96,25 +96,12 @@ export default function NavBar() {
 
       {/* Mobile full-screen overlay sliding from top */}
       <div
-        className={`fixed inset-0 z-[60] overflow-y-auto bg-alabaster transition-all duration-500 ease-organic md:hidden ${
+        className={`fixed inset-0 top-16 z-40 bg-alabaster transition-all duration-500 ease-organic md:hidden ${
           open
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-4 opacity-0"
         }`}
       >
-        {/* Overlay top bar: logo + close, so it doesn't clash with the sticky header */}
-        <div className="container-page flex h-16 items-center justify-between border-b border-stone">
-          <Logo />
-          <button
-            type="button"
-            aria-label="Close menu"
-            onClick={() => setOpen(false)}
-            className="grid h-12 w-12 place-items-center rounded-full border border-stone text-forest"
-          >
-            <X strokeWidth={1.5} className="h-5 w-5" />
-          </button>
-        </div>
-
         <ul className="container-page flex flex-col gap-2 py-8">
           {navItems.map((item) => {
             const active = isActive(pathname, item.href);
