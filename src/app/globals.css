@@ -3,20 +3,11 @@
 @tailwind utilities;
 
 /* ============================================================
-   Vercel-inspired base layer
+   "Botanical / Organic Serif" base layer
    ============================================================ */
 @layer base {
-  :root {
-    --gradient-develop-start: #007cf0;
-    --gradient-develop-end: #00dfd8;
-    --gradient-preview-start: #7928ca;
-    --gradient-preview-end: #ff0080;
-    --gradient-ship-start: #ff4d4d;
-    --gradient-ship-end: #f9cb28;
-  }
-
   * {
-    @apply border-hairline;
+    @apply border-stone;
   }
 
   html {
@@ -26,162 +17,182 @@
   }
 
   body {
-    @apply bg-canvas-soft text-ink font-sans text-body-md;
+    @apply bg-alabaster text-forest font-sans text-body-md;
   }
 
   ::selection {
-    background: #171717;
-    color: #f2f2f2;
+    background: #8c9a84;
+    color: #f9f8f4;
   }
 
-  /* Headings default to the geometric sans, weight 600, tight tracking */
+  /* Headings default to the serif display face */
   h1, h2, h3, h4 {
-    @apply font-sans font-semibold text-ink;
+    @apply font-serif font-semibold text-forest;
     text-wrap: balance;
   }
 }
 
 @layer components {
-  /* ---- Layout container ---- */
+  /* ---- Layout container (max-w-7xl, generous gutters) ---- */
   .container-page {
-    @apply mx-auto w-full max-w-page px-md md:px-lg;
+    @apply mx-auto w-full max-w-page px-6 md:px-8 lg:px-12;
   }
 
-  /* ---- The signature mesh gradient (hero scale only) ---- */
-  .mesh-gradient {
-    background-color: #fafafa;
-    background-image:
-      radial-gradient(at 18% 20%, rgba(0, 124, 240, 0.55) 0px, transparent 55%),
-      radial-gradient(at 80% 10%, rgba(0, 223, 216, 0.45) 0px, transparent 50%),
-      radial-gradient(at 70% 60%, rgba(255, 0, 128, 0.40) 0px, transparent 50%),
-      radial-gradient(at 28% 75%, rgba(121, 40, 202, 0.40) 0px, transparent 55%),
-      radial-gradient(at 90% 85%, rgba(249, 203, 40, 0.38) 0px, transparent 50%),
-      radial-gradient(at 45% 50%, rgba(255, 77, 77, 0.25) 0px, transparent 55%);
-    filter: blur(0px);
+  /* ---- Serif display headline helper w/ italic emphasis ---- */
+  .headline-serif {
+    @apply font-serif font-semibold text-forest;
+    letter-spacing: -0.015em;
+  }
+  .headline-serif em,
+  .italic-accent {
+    @apply font-serif italic;
+    color: #6e7c66;
   }
 
-  /* Gradient text used for editorial accents */
-  .gradient-text {
-    background: linear-gradient(90deg, #007cf0, #00dfd8 35%, #7928ca 60%, #ff0080 85%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  /* Dark-black signature with a shiny metallic sheen sweeping across */
-  .signature-shine {
-    background: linear-gradient(
-      100deg,
-      #171717 0%,
-      #171717 38%,
-      #6b6b6b 47%,
-      #d4d4d4 50%,
-      #6b6b6b 53%,
-      #171717 62%,
-      #171717 100%
-    );
-    background-size: 250% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    animation: signature-sheen 5.5s ease-in-out infinite;
-  }
-
-  @keyframes signature-sheen {
-    0% {
-      background-position: 150% 0;
-    }
-    100% {
-      background-position: -50% 0;
-    }
+  /* ---- Eyebrow: small, uppercase, wide tracking (sans now) ---- */
+  .eyebrow {
+    @apply font-sans text-caption font-medium uppercase text-sage-deep;
+    letter-spacing: 0.18em;
   }
 
   /* ---- Cards ---- */
   .card-marketing {
-    @apply rounded-md bg-canvas p-lg shadow-level-3 transition-shadow duration-200;
+    @apply rounded-3xl border border-stone bg-white p-8 shadow-soft
+           transition-all duration-500 ease-organic;
   }
   .card-marketing:hover {
-    @apply shadow-level-4;
+    @apply -translate-y-2 shadow-large;
   }
 
-  /* ---- Marketing pill buttons ---- */
+  /* ---- Buttons ---- */
+  /* Primary: forest pill, uppercase wide tracking, terracotta on hover */
   .btn-primary {
-    @apply inline-flex h-12 items-center justify-center rounded-pill bg-primary px-lg
-           text-[16px] font-medium leading-6 text-on-primary transition-colors duration-150
-           hover:bg-[#383838];
+    @apply inline-flex h-12 items-center justify-center rounded-full bg-forest px-8
+           font-sans text-sm font-semibold uppercase tracking-widest text-alabaster
+           transition-all duration-300 ease-organic hover:bg-terracotta;
   }
+  /* Secondary: transparent, sage border + sage text */
   .btn-secondary {
-    @apply inline-flex h-12 items-center justify-center rounded-pill border border-hairline-strong
-           bg-canvas px-lg text-[16px] font-medium leading-6 text-ink transition-colors duration-150
-           hover:bg-canvas-soft-2;
+    @apply inline-flex h-12 items-center justify-center rounded-full border border-sage
+           bg-transparent px-8 font-sans text-sm font-semibold uppercase tracking-widest
+           text-sage-deep transition-all duration-300 ease-organic
+           hover:border-terracotta hover:text-terracotta;
   }
   .btn-primary-sm {
-    @apply inline-flex h-9 items-center justify-center rounded-pill bg-primary px-md
-           text-[14px] font-medium leading-5 text-on-primary transition-colors duration-150
-           hover:bg-[#383838];
+    @apply inline-flex h-12 items-center justify-center rounded-full bg-forest px-6
+           font-sans text-sm font-semibold uppercase tracking-widest text-alabaster
+           transition-all duration-300 ease-organic hover:bg-terracotta;
   }
   .btn-secondary-sm {
-    @apply inline-flex h-9 items-center justify-center rounded-pill border border-hairline-strong
-           bg-canvas px-md text-[14px] font-medium leading-5 text-ink transition-colors duration-150
-           hover:bg-canvas-soft-2;
-  }
-
-  /* ---- Mono eyebrow label ---- */
-  .eyebrow {
-    @apply font-mono text-caption uppercase tracking-[0.02em] text-mute;
+    @apply inline-flex h-12 items-center justify-center rounded-full border border-sage
+           bg-transparent px-6 font-sans text-sm font-semibold uppercase tracking-widest
+           text-sage-deep transition-all duration-300 ease-organic
+           hover:border-terracotta hover:text-terracotta;
   }
 
   /* ---- Inline body link ---- */
   .link-inline {
-    @apply text-link underline decoration-from-font underline-offset-2 transition-colors hover:text-link-deep;
+    @apply text-sage-deep underline decoration-stone underline-offset-4
+           transition-colors duration-300 hover:text-terracotta hover:decoration-terracotta;
+  }
+
+  /* ---- Arch image mask (Roman arch) ---- */
+  .arch-top {
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+  }
+
+  /* ---- Chip / tag ---- */
+  .chip {
+    @apply inline-flex items-center rounded-full border border-stone bg-transparent
+           px-3 py-1 font-sans text-caption uppercase tracking-widest text-forest-soft;
   }
 }
 
-/* ---- Long-form prose (blog posts / pages) ---- */
+/* ---- Decorative signature (soft sage→terracotta sheen) ---- */
+.signature-shine {
+  background: linear-gradient(
+    100deg,
+    #2d3a31 0%,
+    #2d3a31 38%,
+    #8c9a84 48%,
+    #c27b66 52%,
+    #8c9a84 56%,
+    #2d3a31 66%,
+    #2d3a31 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: signature-sheen 6s ease-in-out infinite;
+}
+@keyframes signature-sheen {
+  0% { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
+}
+
+/* ============================================================
+   Long-form prose (blog posts) — botanical typography
+   ============================================================ */
 .prose-doc {
-  @apply text-body-lg text-body;
+  @apply text-body-lg text-forest-soft;
 }
 .prose-doc > * + * {
   margin-top: 24px;
 }
 .prose-doc p {
-  @apply text-body-lg text-body;
+  @apply text-body-lg text-forest-soft;
 }
 .prose-doc p.lead {
-  @apply text-display-sm text-ink;
+  @apply font-serif text-display-sm text-forest;
 }
 .prose-doc h2 {
-  @apply text-display-md text-ink;
-  margin-top: 48px;
+  @apply font-serif text-display-md text-forest;
+  margin-top: 56px;
   margin-bottom: 0;
 }
 .prose-doc h3 {
-  @apply text-display-sm text-ink;
-  margin-top: 32px;
+  @apply font-serif text-display-sm text-forest;
+  margin-top: 40px;
 }
 .prose-doc a {
   @apply link-inline;
 }
 .prose-doc strong {
-  @apply font-medium text-ink;
+  @apply font-semibold text-forest;
 }
 .prose-doc em {
   font-style: italic;
 }
 .prose-doc ul {
-  @apply list-disc space-y-2 pl-6 text-body-lg text-body;
+  @apply list-disc space-y-2 pl-6 text-body-lg text-forest-soft;
+  list-style-type: "🌿  ";
+}
+.prose-doc ul {
+  list-style-type: disc;
 }
 .prose-doc ol {
-  @apply list-decimal space-y-2 pl-6 text-body-lg text-body;
+  @apply list-decimal space-y-2 pl-6 text-body-lg text-forest-soft;
 }
 .prose-doc hr {
-  @apply my-3xl border-0 border-t border-hairline;
+  @apply my-3xl border-0 border-t border-stone;
 }
 .prose-doc blockquote {
-  @apply border-l-2 border-hairline-strong pl-lg italic text-body;
+  @apply border-l-2 border-sage pl-6 font-serif text-display-sm italic text-forest;
+}
+
+/* ---- Scroll-in fade + rise ---- */
+.reveal {
+  animation: fade-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes fade-rise {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {

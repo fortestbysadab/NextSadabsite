@@ -17,9 +17,11 @@ export default function Logo({
   shape?: "square" | "circle";
   boxClassName?: string;
 }) {
-  // Header badge is 32px; footer circle is smaller (28px).
+  // Soft pale sage circle so the monogram floats rather than sits in a hard box.
   const defaultBox =
-    shape === "circle" ? "h-7 w-7 rounded-full" : "h-8 w-8 rounded-md";
+    shape === "circle"
+      ? "h-9 w-9 rounded-full"
+      : "h-9 w-9 rounded-full";
 
   return (
     <Link
@@ -29,7 +31,7 @@ export default function Logo({
     >
       <span
         aria-hidden
-        className={`grid place-items-center bg-primary p-[3px] ${
+        className={`grid place-items-center border border-stone bg-forest p-[5px] transition-colors duration-300 ${
           boxClassName ?? defaultBox
         }`}
       >

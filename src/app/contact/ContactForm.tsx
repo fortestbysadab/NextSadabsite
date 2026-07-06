@@ -50,18 +50,20 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "h-12 w-full rounded-sm border border-hairline bg-canvas px-sm text-body-md text-ink placeholder:text-mute transition-colors focus:border-hairline-strong focus:outline-none focus:ring-2 focus:ring-link/20";
+    "h-14 w-full rounded-full border border-stone bg-clay-soft px-5 text-body-md text-forest placeholder:text-forest-mute transition-colors duration-300 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 focus:ring-offset-white";
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center gap-md py-xl text-center">
-        <div className="grid h-12 w-12 place-items-center rounded-full bg-link-bg-soft text-link-deep">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <div className="flex flex-col items-center gap-4 py-10 text-center">
+        <div className="grid h-14 w-14 place-items-center rounded-full bg-success-soft text-sage-deep">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <p className="text-display-sm text-ink">{t.contact.successTitle}</p>
-        <p className="max-w-prose text-body-md text-body">{feedback}</p>
+        <p className="font-serif text-display-sm text-forest">
+          {t.contact.successTitle}
+        </p>
+        <p className="max-w-prose text-body-md text-forest-soft">{feedback}</p>
       </div>
     );
   }
@@ -69,14 +71,14 @@ export default function ContactForm() {
   return (
     <>
       {status === "error" && feedback && (
-        <div className="mb-md rounded-sm bg-error-soft px-sm py-sm text-body-sm text-error-deep">
+        <div className="mb-5 rounded-2xl border border-error/30 bg-error-soft px-5 py-3 text-body-sm text-error-deep">
           {feedback}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-md">
-        <div className="flex flex-col gap-xs">
-          <label htmlFor="name" className="text-body-sm font-medium text-ink">
+      <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="name" className="text-body-sm font-semibold text-forest">
             {t.contact.nameLabel}
           </label>
           <input
@@ -89,8 +91,8 @@ export default function ContactForm() {
           />
         </div>
 
-        <div className="flex flex-col gap-xs">
-          <label htmlFor="email" className="text-body-sm font-medium text-ink">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email" className="text-body-sm font-semibold text-forest">
             {t.contact.emailLabel}
           </label>
           <input
@@ -103,8 +105,8 @@ export default function ContactForm() {
           />
         </div>
 
-        <div className="flex flex-col gap-xs">
-          <label htmlFor="message" className="text-body-sm font-medium text-ink">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="message" className="text-body-sm font-semibold text-forest">
             {t.contact.messageLabel}
           </label>
           <textarea
@@ -113,32 +115,32 @@ export default function ContactForm() {
             placeholder={t.contact.messagePlaceholder}
             required
             rows={6}
-            className="w-full rounded-sm border border-hairline bg-canvas px-sm py-sm text-body-md text-ink placeholder:text-mute transition-colors focus:border-hairline-strong focus:outline-none focus:ring-2 focus:ring-link/20"
+            className="w-full rounded-3xl border border-stone bg-clay-soft px-5 py-4 text-body-md text-forest placeholder:text-forest-mute transition-colors duration-300 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 focus:ring-offset-white"
           />
         </div>
 
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="btn-primary mt-xs w-full disabled:cursor-not-allowed disabled:opacity-65"
+          className="btn-primary mt-2 h-14 w-full disabled:cursor-not-allowed disabled:opacity-65"
         >
           {status === "submitting" ? t.contact.sending : t.contact.send}
         </button>
       </form>
 
-      <div className="my-lg flex items-center gap-sm text-body-sm text-mute">
-        <span className="h-px flex-1 bg-hairline" />
+      <div className="my-8 flex items-center gap-4 text-caption uppercase tracking-widest text-forest-mute">
+        <span className="h-px flex-1 bg-stone" />
         <span>{t.contact.orLabel}</span>
-        <span className="h-px flex-1 bg-hairline" />
+        <span className="h-px flex-1 bg-stone" />
       </div>
 
       <div className="flex justify-center">
         <a
           href={`mailto:${site.email}`}
-          className="inline-flex items-center gap-2 text-body-sm font-medium text-body transition-colors hover:text-link"
+          className="inline-flex items-center gap-2 text-body-sm font-semibold text-forest-soft transition-colors duration-300 hover:text-terracotta"
           aria-label={t.contact.emailDirect}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <rect x="2" y="4" width="20" height="16" rx="2" />
             <polyline points="2,4 12,13 22,4" />
           </svg>

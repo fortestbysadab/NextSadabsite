@@ -12,11 +12,13 @@ export default function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <header className="flex flex-col gap-md">
+    <header className="flex flex-col gap-6">
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h1 className="text-display-lg text-ink md:text-display-xl">{title}</h1>
+      <h1 className="headline-serif text-5xl md:text-6xl">{title}</h1>
       {description && (
-        <p className="max-w-prose text-body-lg text-body">{description}</p>
+        <p className="max-w-prose text-body-lg text-forest-soft">
+          {description}
+        </p>
       )}
       {children}
     </header>

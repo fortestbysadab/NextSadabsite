@@ -57,7 +57,7 @@ export default function BlogPostPage({ params }: Params) {
   };
 
   return (
-    <div className="container-page py-4xl md:py-5xl">
+    <div className="container-page py-24 md:py-32">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -68,24 +68,24 @@ export default function BlogPostPage({ params }: Params) {
         <div className="mx-auto max-w-2xl">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1 text-body-sm text-body transition-colors hover:text-ink"
+            className="inline-flex items-center gap-2 text-caption uppercase tracking-widest text-forest-soft transition-colors hover:text-terracotta"
           >
             ← All writing
           </Link>
 
-          <header className="mt-xl flex flex-col gap-md border-b border-hairline pb-xl">
-            <p className="font-mono text-caption text-mute">
+          <header className="mt-8 flex flex-col gap-5 border-b border-stone pb-10">
+            <p className="text-caption uppercase tracking-widest text-forest-mute">
               {formatDate(post.date)} · {post.readingTime}
             </p>
-            <h1 className="text-display-lg text-ink md:text-display-xl">
+            <h1 className="headline-serif text-5xl md:text-6xl">
               {post.title}
             </h1>
           </header>
         </div>
 
-        {/* Cover image — breaks out to full container width */}
+        {/* Cover image — full width, softly rounded */}
         {post.coverImage && (
-          <div className="mt-2xl overflow-hidden rounded-lg bg-canvas-soft-2 shadow-level-3">
+          <div className="mt-12 overflow-hidden rounded-[40px] border border-stone bg-clay-soft shadow-large">
             <Image
               src={post.coverImage}
               alt={post.title}
@@ -99,12 +99,12 @@ export default function BlogPostPage({ params }: Params) {
         )}
 
         {/* Body — centered, readable column width */}
-        <div className="mx-auto mt-2xl max-w-2xl">
+        <div className="mx-auto mt-12 max-w-2xl">
           <MdxContent source={post.content} />
 
-          <hr className="my-3xl border-0 border-t border-hairline" />
+          <hr className="my-16 border-0 border-t border-stone" />
 
-          <p className="text-body-md text-body">
+          <p className="text-body-md text-forest-soft">
             Thanks for reading. If this resonated with you, I&apos;d love to hear
             about what you&apos;re building.{" "}
             <Link href="/contact" className="link-inline">

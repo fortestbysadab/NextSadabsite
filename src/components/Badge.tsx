@@ -8,12 +8,12 @@ export default function Badge({
   tone?: "default" | "accent";
 }) {
   const tones = {
-    default: "bg-canvas-soft-2 text-body",
-    accent: "bg-link-bg-soft text-link-deep",
+    default: "border-stone bg-transparent text-forest-soft",
+    accent: "border-sage bg-success-soft text-sage-deep",
   };
   return (
     <span
-      className={`inline-flex items-center rounded-full px-xs py-px font-mono text-caption ${tones[tone]}`}
+      className={`inline-flex items-center rounded-full border px-3 py-1 font-sans text-caption uppercase tracking-widest ${tones[tone]}`}
     >
       {children}
     </span>

@@ -7,16 +7,20 @@ export default function ContactPageContent() {
   const { t } = useLanguage();
 
   return (
-    <div className="container-page max-w-content py-4xl md:py-5xl">
-      <header className="flex flex-col gap-md">
-        <h1 className="text-display-lg text-ink md:text-display-xl">
-          {t.contact.title}
-        </h1>
-        <p className="max-w-prose text-body-lg text-body">{t.contact.subtitle}</p>
-      </header>
+    <div className="container-page py-24 md:py-32">
+      <div className="mx-auto max-w-2xl">
+        <header className="flex flex-col gap-6">
+          <h1 className="headline-serif text-5xl md:text-6xl">
+            {t.contact.title}
+          </h1>
+          <p className="max-w-prose text-body-lg text-forest-soft">
+            {t.contact.subtitle}
+          </p>
+        </header>
 
-      <div className="mt-2xl rounded-lg bg-canvas p-xl shadow-level-4">
-        <ContactForm />
+        <div className="mt-12 rounded-3xl border border-stone bg-white p-8 shadow-medium md:p-10">
+          <ContactForm />
+        </div>
       </div>
     </div>
   );

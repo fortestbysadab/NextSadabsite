@@ -39,18 +39,34 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-hairline bg-canvas">
-      <div className="container-page py-4xl">
+    <footer className="border-t border-stone bg-clay-soft/50">
+      {/* meandering root/vine divider */}
+      <svg
+        aria-hidden
+        className="h-12 w-full text-sage/40"
+        viewBox="0 0 1400 48"
+        fill="none"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,24 C 220,-4 380,52 620,24 S 1050,-4 1400,28"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+        />
+      </svg>
+
+      <div className="container-page pb-24 pt-8">
         {/* Logo sits above the footer nav columns */}
-        <div className="mb-xl">
+        <div className="mb-12">
           <Logo shape="circle" />
         </div>
 
-        <div className="grid grid-cols-2 gap-2xl sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-12 sm:grid-cols-3">
           {footerNav.map((col) => (
-            <div key={col.label} className="flex flex-col gap-sm">
+            <div key={col.label} className="flex flex-col gap-4">
               <h3 className="eyebrow">{colLabel(col.label)}</h3>
-              <ul className="flex flex-col gap-xs">
+              <ul className="flex flex-col gap-3">
                 {col.links.map((link) => (
                   <li key={link.href}>
                     <Link
@@ -58,7 +74,7 @@ export default function Footer() {
                       {...("external" in link && link.external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}
-                      className="text-body-sm text-body transition-colors hover:text-ink"
+                      className="text-body-md text-forest-soft transition-colors duration-300 hover:text-terracotta"
                     >
                       {linkLabel(link.label)}
                     </Link>
@@ -69,8 +85,8 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-3xl flex flex-col items-start justify-between gap-md border-t border-hairline pt-lg sm:flex-row sm:items-center">
-          <p className="font-mono text-caption text-mute">
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-stone pt-8 sm:flex-row sm:items-center">
+          <p className="text-caption uppercase tracking-widest text-forest-mute">
             © {year} {site.name}. {t.footer.rights}
           </p>
         </div>

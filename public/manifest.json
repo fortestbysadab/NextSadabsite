@@ -4,8 +4,8 @@
   "description": "Personal space of Sadab Munshi. Exploring ideas, building useful things, and sharing what I learn along the way.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#171717",
+  "background_color": "#F9F8F4",
+  "theme_color": "#2D3A31",
   "icons": [
     {
       "src": "/assets/images/android-chrome-192x192.png",

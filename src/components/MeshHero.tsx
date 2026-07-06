@@ -1,23 +1,42 @@
 import { ReactNode } from "react";
 
 /**
- * Hero band with the signature multi-stop mesh gradient backdrop.
- * The gradient is the brand's only decorative system — used at hero scale only.
+ * Botanical hero band.
+ *
+ * NOTE: filename kept as MeshHero for API stability, but the mesh gradient is
+ * gone — this is now a calm botanical backdrop with soft sage/clay organic
+ * shapes and a meandering vine line. Same `{children}` API as before.
  */
 export default function MeshHero({ children }: { children: ReactNode }) {
   return (
-    <section className="relative isolate overflow-hidden border-b border-hairline">
-      {/* Mesh gradient atmospheric backdrop — occupies the top portion */}
+    <section className="relative isolate overflow-hidden bg-alabaster">
+      {/* Soft organic background blobs */}
       <div
         aria-hidden
-        className="mesh-gradient pointer-events-none absolute inset-x-0 top-0 -z-10 h-[120%] opacity-[0.55]"
+        className="pointer-events-none absolute -right-24 -top-24 -z-10 h-[420px] w-[420px] rounded-full bg-sage/15 blur-3xl"
       />
-      {/* Fade the gradient into canvas at the bottom */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-canvas-soft/40 to-canvas-soft"
+        className="pointer-events-none absolute -bottom-32 -left-24 -z-10 h-[380px] w-[380px] rounded-full bg-clay/40 blur-3xl"
       />
-      <div className="container-page py-4xl md:py-5xl">{children}</div>
+
+      {/* Meandering vine line */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 w-full text-sage/30"
+        viewBox="0 0 1400 160"
+        fill="none"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,120 C 200,40 350,160 560,100 S 950,20 1150,110 1400,80 1400,80"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+        />
+      </svg>
+
+      <div className="container-page py-24 md:py-32">{children}</div>
     </section>
   );
 }
