@@ -94,45 +94,54 @@ export default function NavBar() {
         </button>
       </nav>
 
-      {/* Mobile full-screen overlay sliding from top */}
-      <div
-        className={`fixed inset-0 top-16 z-40 bg-alabaster transition-all duration-500 ease-organic md:hidden ${
-          open
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none -translate-y-4 opacity-0"
-        }`}
-      >
-        <ul className="container-page flex flex-col gap-2 py-8">
-          {navItems.map((item) => {
-            const active = isActive(pathname, item.href);
-            const labelKey = NAV_LABEL_KEYS[item.href];
-            const label = labelKey ? t.nav[labelKey] : item.label;
-            return (
-              <li key={item.href} className="border-b border-stone">
-                <Link
-                  href={item.href}
-                  className={`block py-4 font-serif text-3xl ${
-                    active ? "italic text-sage-deep" : "text-forest"
-                  }`}
-                >
-                  {label}
-                </Link>
-              </li>
-            );
-          })}
-          <li className="mt-6 flex gap-3">
-            <Link href={site.resumeFile} className="btn-secondary-sm flex-1">
-              {t.nav.resume}
-            </Link>
-            <Link href="/contact" className="btn-primary-sm flex-1">
-              {t.nav.getInTouch}
-            </Link>
-          </li>
-          <li className="mt-4 flex justify-center">
-            <LanguageSwitcher />
-          </li>
-        </ul>
-      </div>
+      {/* Mobile full-screen overlay */}
+      {open && (
+        <div className="fixed inset-0 z-[60] overflow-y-auto bg-alabaster md:hidden">
+          {/* Overlay top bar: logo + close */}
+          <div className="container-page flex h-16 items-center justify-between border-b border-stone bg-alabaster">
+            <Logo />
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="grid h-12 w-12 place-items-center rounded-full border border-stone text-forest"
+            >
+              <X strokeWidth={1.5} className="h-5 w-5" />
+            </button>
+          </div>
+
+          <ul className="container-page flex flex-col gap-2 py-8">
+            {navItems.map((item) => {
+              const active = isActive(pathname, item.href);
+              const labelKey = NAV_LABEL_KEYS[item.href];
+              const label = labelKey ? t.nav[labelKey] : item.label;
+              return (
+                <li key={item.href} className="border-b border-stone">
+                  <Link
+                    href={item.href}
+                    className={`block py-4 font-serif text-3xl ${
+                      active ? "italic text-sage-deep" : "text-forest"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+            <li className="mt-6 flex gap-3">
+              <Link href={site.resumeFile} className="btn-secondary-sm flex-1">
+                {t.nav.resume}
+              </Link>
+              <Link href="/contact" className="btn-primary-sm flex-1">
+                {t.nav.getInTouch}
+              </Link>
+            </li>
+            <li className="mt-4 flex justify-center">
+              <LanguageSwitcher />
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 }
