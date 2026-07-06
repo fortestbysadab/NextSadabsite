@@ -35,66 +35,73 @@ export default function NavBar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-stone bg-alabaster/80 backdrop-blur-md">
-      <nav
-        aria-label="Main navigation"
-        className="container-page flex h-16 items-center justify-between gap-4"
-      >
-        <Logo />
-
-        {/* Desktop nav links */}
-        <ul className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => {
-            const active = isActive(pathname, item.href);
-            const labelKey = NAV_LABEL_KEYS[item.href];
-            const label = labelKey ? t.nav[labelKey] : item.label;
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={`rounded-full px-4 py-2 text-body-sm transition-colors duration-300 ${
-                    active
-                      ? "text-forest underline decoration-sage decoration-2 underline-offset-8"
-                      : "text-forest-soft hover:text-forest"
-                  }`}
-                >
-                  {label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Desktop CTA cluster */}
-        <div className="hidden items-center gap-3 md:flex">
-          <LanguageSwitcher />
-          <Link
-            href={site.resumeFile}
-            className="text-body-sm font-medium text-forest-soft transition-colors hover:text-forest"
-          >
-            {t.nav.resume}
-          </Link>
-          <Link
-            href="/contact"
-            className="flex h-10 items-center rounded-full bg-forest px-5 text-caption font-semibold uppercase tracking-widest text-alabaster transition-colors duration-300 hover:bg-terracotta"
-          >
-            {t.nav.getInTouch}
-          </Link>
-        </div>
-
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-12 w-12 place-items-center rounded-full border border-stone text-forest md:hidden"
+    <>
+      <header className="sticky top-0 z-50 border-b border-stone bg-alabaster/80 backdrop-blur-md">
+        <nav
+          aria-label="Main navigation"
+          className="container-page flex h-16 items-center justify-between gap-4"
         >
-          {open ? <X strokeWidth={1.5} className="h-5 w-5" /> : <Menu strokeWidth={1.5} className="h-5 w-5" />}
-        </button>
-      </nav>
+          <Logo />
 
-      {/* Mobile full-screen overlay */}
+          {/* Desktop nav links */}
+          <ul className="hidden items-center gap-1 md:flex">
+            {navItems.map((item) => {
+              const active = isActive(pathname, item.href);
+              const labelKey = NAV_LABEL_KEYS[item.href];
+              const label = labelKey ? t.nav[labelKey] : item.label;
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`rounded-full px-4 py-2 text-body-sm transition-colors duration-300 ${
+                      active
+                        ? "text-forest underline decoration-sage decoration-2 underline-offset-8"
+                        : "text-forest-soft hover:text-forest"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* Desktop CTA cluster */}
+          <div className="hidden items-center gap-3 md:flex">
+            <LanguageSwitcher />
+            <Link
+              href={site.resumeFile}
+              className="text-body-sm font-medium text-forest-soft transition-colors hover:text-forest"
+            >
+              {t.nav.resume}
+            </Link>
+            <Link
+              href="/contact"
+              className="flex h-10 items-center rounded-full bg-forest px-5 text-caption font-semibold uppercase tracking-widest text-alabaster transition-colors duration-300 hover:bg-terracotta"
+            >
+              {t.nav.getInTouch}
+            </Link>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-12 w-12 place-items-center rounded-full border border-stone text-forest md:hidden"
+          >
+            {open ? <X strokeWidth={1.5} className="h-5 w-5" /> : <Menu strokeWidth={1.5} className="h-5 w-5" />}
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobile full-screen overlay — rendered as a sibling of <header>, NOT nested
+          inside it. Keeping it inside a backdrop-blur / sticky ancestor can create
+          a new containing block for position:fixed in some browsers, which pins
+          "fixed" to that ancestor's box instead of the real viewport and can make
+          the overlay render clipped, offset, or invisible. Moving it out here
+          guarantees `fixed inset-0` always covers the true viewport. */}
       {open && (
         <div className="fixed inset-0 z-[60] overflow-y-auto bg-alabaster md:hidden">
           {/* Overlay top bar: logo + close */}
@@ -142,6 +149,6 @@ export default function NavBar() {
           </ul>
         </div>
       )}
-    </header>
+    </>
   );
 }
