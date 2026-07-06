@@ -48,7 +48,7 @@ export default function BlogContent({ posts }: { posts: BlogPostMeta[] }) {
                   </span>
                 )}
               </div>
-              <h2 className="font-serif text-display-sm text-forest">
+              <h2 className="font-serif text-xl sm:text-display-sm text-forest">
                 {post.title}
               </h2>
               <p className="text-body-sm text-forest-soft">{post.excerpt}</p>

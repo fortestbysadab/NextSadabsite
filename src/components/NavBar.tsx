@@ -136,10 +136,16 @@ export default function NavBar() {
               );
             })}
             <li className="mt-6 flex gap-3">
-              <Link href={site.resumeFile} className="btn-secondary-sm flex-1">
+              <Link
+                href={site.resumeFile}
+                className="btn-secondary-sm flex-1 whitespace-nowrap !px-3 !tracking-wide"
+              >
                 {t.nav.resume}
               </Link>
-              <Link href="/contact" className="btn-primary-sm flex-1">
+              <Link
+                href="/contact"
+                className="btn-primary-sm flex-1 whitespace-nowrap !px-3 !tracking-wide"
+              >
                 {t.nav.getInTouch}
               </Link>
             </li>

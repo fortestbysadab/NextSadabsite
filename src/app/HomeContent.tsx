@@ -133,7 +133,7 @@ export default function HomeContent({ posts }: { posts: BlogPostMeta[] }) {
                   <p className="text-caption uppercase tracking-widest text-forest-mute">
                     {formatDateLong(post.date)}
                   </p>
-                  <h3 className="font-serif text-display-sm text-forest">
+                  <h3 className="font-serif text-xl sm:text-display-sm text-forest">
                     {post.title}
                   </h3>
                   <p className="text-body-sm text-forest-soft">{post.excerpt}</p>
