@@ -35,7 +35,7 @@ export const hi: Translations = {
     readMore: "और पढ़ें →",
     notesLabel: "उस खोज के नोट्स",
     tagline: "करके सीखना",
-    signature: "जिज्ञासु मन। निर्माता के हाथ।",
+    signature: "Sadab Munshi",
     moods: [
       "ऐसी चीज़ समझने की कोशिश कर रहा हूँ जो पहले कभी नहीं छुई। यही अच्छी बात है।",
       "आज कुछ दिलचस्प तोड़ा। अब और जानता हूँ।",

@@ -35,7 +35,7 @@ export const bn: Translations = {
     readMore: "আরও পড়ুন →",
     notesLabel: "সেই অনুসন্ধানের নোট",
     tagline: "করে শেখা",
-    signature: "কৌতূহলী মন। নির্মাতার হাত।",
+    signature: "Sadab Munshi",
     moods: [
       "এমন কিছু বোঝার চেষ্টা করছি যা কখনো স্পর্শ করিনি। এটাই ভালো দিক।",
       "আজ মজার কিছু ভেঙে ফেললাম। এখন আরও বেশি জানি।",
