@@ -57,13 +57,12 @@ export const en: Translations = {
       "Working on a project in the finance space.",
       "Trying to understand how financial systems actually work underneath.",
       "Writing about what I learn, including the parts that didn't go as planned.",
-      "Reading more. Scrolling less.",
     ],
     watchingLink: "/watching",
     watchingLinkLabel: "See what I'm watching →",
     closingLine: "Start wherever you're curious.",
-    closingProjects: "projects",
-    closingBlog: "blog",
+    closingProjects: "Projects",
+    closingBlog: "Blog",
   },
 
   blog: {
