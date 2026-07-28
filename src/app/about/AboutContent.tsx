@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Leaf } from "lucide-react";
@@ -8,6 +9,11 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutContent() {
   const { t } = useLanguage();
+
+  // Press-and-hold colour reveal on touch devices.
+  // CSS :active is unreliable on some Android browsers, so the state is
+  // toggled explicitly; desktop keeps the pure CSS hover: variant.
+  const [isPressed, setIsPressed] = useState(false);
 
   return (
     <div className="container-page py-24 md:py-32">
@@ -21,14 +27,22 @@ export default function AboutContent() {
               aria-hidden
               className="absolute inset-0 -translate-x-2 translate-y-2 rounded-t-full rounded-b-[28px] bg-clay/50"
             />
-            <div className="relative h-40 w-32 overflow-hidden rounded-t-full rounded-b-[28px] border border-stone bg-clay-soft shadow-medium">
+            <div
+              onTouchStart={() => setIsPressed(true)}
+              onTouchEnd={() => setIsPressed(false)}
+              onTouchCancel={() => setIsPressed(false)}
+              className="group relative h-40 w-32 overflow-hidden rounded-t-full rounded-b-[28px] border border-stone bg-clay-soft shadow-medium"
+            >
               <Image
-                src="/assets/images/sadab-portrait.jpg"
+                src="/assets/images/about-s-m.webp"
                 alt={t.about.title}
                 fill
                 priority
                 sizes="128px"
-                className="object-cover transition-transform duration-700 ease-organic hover:scale-105"
+                draggable={false}
+                className={`select-none object-cover transition-[filter,transform] duration-700 ease-organic group-hover:scale-105 hover:grayscale-0 group-hover:grayscale-0 ${
+                  isPressed ? "grayscale-0" : "grayscale"
+                }`}
               />
             </div>
           </div>
