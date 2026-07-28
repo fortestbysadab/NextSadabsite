@@ -80,7 +80,7 @@ export const en: Translations = {
       {
         name: "FinFlow",
         description:
-          "A personal finance tool that automatically categorizes spending and forecasts future expenses. Built to help me understand where my money actually goes.",
+          "A Personal Finance Management System that automatically categorizes spending and forecasts future expenses. Built to help me understand where my money actually goes.",
         tags: ["Next.js", "Node.js", "TypeScript"],
         href: "https://app.sadabmunshi.online",
       },
