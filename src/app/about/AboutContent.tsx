@@ -31,7 +31,7 @@ export default function AboutContent() {
               onTouchStart={() => setIsPressed(true)}
               onTouchEnd={() => setIsPressed(false)}
               onTouchCancel={() => setIsPressed(false)}
-              className="group relative h-40 w-32 overflow-hidden rounded-t-full rounded-b-[28px] border border-stone bg-clay-soft shadow-medium"
+              className="group relative aspect-[4/5] w-32 overflow-hidden rounded-t-full rounded-b-[28px] border border-stone bg-clay-soft shadow-medium"
             >
               <Image
                 src="/assets/images/about-s-m.webp"
@@ -40,7 +40,7 @@ export default function AboutContent() {
                 priority
                 sizes="128px"
                 draggable={false}
-                className={`select-none object-cover transition-[filter,transform] duration-700 ease-organic group-hover:scale-105 hover:grayscale-0 group-hover:grayscale-0 ${
+                className={`select-none object-cover object-top transition-[filter,transform] duration-700 ease-organic group-hover:scale-105 hover:grayscale-0 group-hover:grayscale-0 ${
                   isPressed ? "grayscale-0" : "grayscale"
                 }`}
               />
