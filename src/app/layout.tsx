@@ -34,6 +34,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  // Pages stay indexable, but search engines must not surface image
+  // previews — keeps personal photos out of Google/Bing image search.
+  robots: {
+    index: true,
+    follow: true,
+    noimageindex: true,
+    "max-image-preview": "none",
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-image-preview": "none",
+    },
+  },
   openGraph: {
     type: "website",
     siteName: site.name,
