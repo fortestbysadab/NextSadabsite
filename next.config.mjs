@@ -40,6 +40,15 @@ const nextConfig = {
           },
         ],
       },
+      {
+        // Machine-readable maps for AI agents — always served fresh-ish
+        // and never cached as stale by intermediaries.
+        source: "/llms.txt",
+        headers: [
+          { key: "Content-Type", value: "text/plain; charset=utf-8" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+        ],
+      },
     ];
   },
   async redirects() {

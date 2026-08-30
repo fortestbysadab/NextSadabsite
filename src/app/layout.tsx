@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import PostHogProvider from "@/components/PostHogProvider";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { site } from "@/lib/site";
+import { rootGraph } from "@/lib/schema";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -81,18 +82,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: site.name,
-    url: site.url,
-    sameAs: [
-      site.social.github,
-      site.social.linkedin,
-      site.social.twitter,
-      site.social.instagram,
-    ],
-  };
+  // Full Person + WebSite entity graph — see src/lib/schema.ts
 
   return (
     <html
@@ -112,7 +102,7 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(rootGraph) }}
         />
         <LanguageProvider>
           <PostHogProvider>

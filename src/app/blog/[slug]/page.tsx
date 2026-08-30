@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { formatDate } from "@/lib/utils";
 import { site } from "@/lib/site";
+import { graph, ids, breadcrumbSchema } from "@/lib/schema";
 import MdxContent from "@/components/MdxContent";
 
 type Params = { params: { slug: string } };
@@ -43,18 +44,35 @@ export default function BlogPostPage({ params }: Params) {
   const post = getPostBySlug(params.slug);
   if (!post) notFound();
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    url: `${site.url}/blog/${post.slug}`,
-    image: post.coverImage
-      ? `${site.url}${post.coverImage}`
-      : `${site.url}/assets/images/og-image.png`,
-    datePublished: post.date,
-    dateModified: post.modified,
-    author: { "@type": "Person", name: site.author },
-  };
+  const url = `${site.url}/blog/${post.slug}`;
+  const articleSchema = graph(
+    {
+      "@type": "BlogPosting",
+      "@id": `${url}#article`,
+      headline: post.title,
+      name: post.title,
+      description: post.description || post.excerpt,
+      abstract: post.excerpt,
+      url,
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      image: post.coverImage
+        ? `${site.url}${post.coverImage}`
+        : `${site.url}/assets/images/og-image.png`,
+      datePublished: post.date,
+      dateModified: post.modified,
+      inLanguage: "en",
+      isAccessibleForFree: true,
+      // Linked by @id to the single Person entity defined in the layout.
+      author: { "@id": ids.person },
+      publisher: { "@id": ids.person },
+      creator: { "@id": ids.person },
+    },
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: post.title, path: `/blog/${post.slug}` },
+    ])
+  );
 
   return (
     <div className="container-page py-24 md:py-32">
